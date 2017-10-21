@@ -1,12 +1,15 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Genetic {
 
 	DrawingCanvas canvas;
+	Random generator;
 
 	public Genetic(DrawingCanvas canvas) {
 		this.canvas = canvas;
+		this.generator = new Random();
 	}
 
 	public void calculateFitness() {
@@ -15,6 +18,7 @@ public class Genetic {
 			double d = canvas.calcDistance(canvas.cities, canvas.population.get(i));
 			if (d < canvas.recordDistance) {
 				canvas.recordDistance = d;
+				System.out.println(d);
 				canvas.bestEver = canvas.population.get(i);
 			}
 			canvas.fitness.add(1/(d+1));
@@ -43,16 +47,23 @@ public class Genetic {
 
 	public int[] pickOne(ArrayList<int[]> list, ArrayList<Double> prob) {
 		int index = 0;
-		double r = Math.random();
+		double r = generator.nextDouble();
+		//System.out.println(r);
 
 		while (r > 0) {
-			r = r - prob.get(index);
+			r -= prob.get(index);
+			//System.out.println(r);
 			index++;
 		}
 		index--;
-		//I am getting an error in the return, out of bounds
-		int[] copy = canvas.copyArray(list.get(index));
-		return copy; //I return a copy because I will start messing with them
+		
+		if (index >= 0 && index < list.size()) {
+			return canvas.copyArray(list.get(index)); //I return a copy because I will start messing with them
+		}
+		else {
+			int r2 = (int) (Math.random()*list.size()); //I have to fix this, sometimes the index is out of bounds...
+			return canvas.copyArray(list.get(r2));
+		}
 	}
 
 	public void mutate(int[] order, double mutationRate) {

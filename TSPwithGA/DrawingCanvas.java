@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class DrawingCanvas extends Canvas {
 
@@ -17,11 +18,11 @@ public class DrawingCanvas extends Canvas {
 
 	Genetic algorithm;
 
-	int totalCities = 5;
+	int totalCities = 10;
 	JVector[] cities;
 
 	int[] order;
-	int popSize = 10;
+	int popSize = 300;
 	ArrayList<int[]> population;
 	ArrayList<Double> fitness;
 
@@ -31,6 +32,8 @@ public class DrawingCanvas extends Canvas {
 	int[] bestEver;
 
 	DecimalFormat df;
+
+	Random generator;
 
 	public DrawingCanvas(int width, int height) { //SETUP
 		this.width = width;
@@ -48,7 +51,7 @@ public class DrawingCanvas extends Canvas {
 		population = new ArrayList<int[]>();
 		for (int i = 0; i < popSize; i++) {
 			population.add(copyArray(order));
-			shuffle(population.get(i), 100);
+			shuffle(population.get(i), 300);
 		}
 
 		fitness = new ArrayList<Double>();
@@ -93,6 +96,7 @@ public class DrawingCanvas extends Canvas {
 			algorithm.calculateFitness();
 			//System.out.println(fitness);
 			algorithm.normalizeFitness();
+			//System.out.println(fitness);
 			algorithm.nextGeneration();
 			
 			g.setColor(Color.WHITE); //Draw the cities
