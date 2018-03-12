@@ -10,6 +10,8 @@ There are some different ways of "solving" this:
   4. In the directory TSPwithGA ,I implement a genetic algorithm to make the process faster (and delete the permutation thing)
   5. In the directory TSPwithCrossOver, I implement crossover feature to the genetic algorithm
  
+The number of cities can be changed in the code.
+
 There are a few improvements to do:
   1. Since the matter of distance is only comparing an order with another to find the one that fits the best, there is no need to use the distance function from JVector, because it uses the square root and that slows the computations. So I could make a new distance function only using the square of the coordinates
   2. Maybe improving the mutate and crossover features to make the process faster
