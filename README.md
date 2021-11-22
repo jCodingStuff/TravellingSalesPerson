@@ -16,5 +16,4 @@ There are a few improvements to do:
   1. Since the matter of distance is only comparing an order with another to find the one that fits the best, there is no need to use the distance function from JVector, because it uses the square root and that slows the computations. So I could make a new distance function only using the square of the coordinates
   2. Maybe improving the mutate and crossover features to make the process faster
 
-Inspired in a video by Dan Shiffman: 
-https://www.youtube.com/watch?v=BAejnwN4Ccw
+Inspired in a [video](https://www.youtube.com/watch?v=BAejnwN4Ccw) by Dan Shiffman.
