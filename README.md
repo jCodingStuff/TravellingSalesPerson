@@ -1,5 +1,7 @@
 # TravellingSalesPerson
 
+<img src="/imgs/screenshot.png" alt="Thumbnail" width="50%"/>
+
 A simulation approach for the Travelling Salesperson problem, where a person has to travel among several cities.
 The challenge consists of finding the shortest path!
 
